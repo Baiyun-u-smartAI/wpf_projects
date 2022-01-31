@@ -60,7 +60,7 @@ namespace WpfApp1
                 Name = "haha",
                 Text = "hello go to ",
                 FontSize = 20,
-                Foreground = new SolidColorBrush(Color.FromRgb(0xff, 0x2f, 0x4a))
+                Foreground = new SolidColorBrush(Color.FromRgb(0xff, 0x2f, 0x4a)) //用RGB表示文字颜色
             };
             lb2.Inlines.Add(Baidu);//在 <TextBlock>hello go to </TextBlock>的to后面添加Hyperlink Baidu
             stack.Children.Add(lb2);// 将TextBlock lb2添加到stack上面
