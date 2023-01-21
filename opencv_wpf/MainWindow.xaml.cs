@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Threading;
 using System.Windows;
 using OpenCvSharp;
 using OpenCvSharp.WpfExtensions;
@@ -24,9 +25,21 @@ namespace opencv_wpf
         private void BrightnessBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             //Console.WriteLine(e.NewValue);
-            int val = (int)e.NewValue;
-            Mat dst = this.src + new Scalar(val, val, val);
-            ImageCV.Source = dst.ToWriteableBitmap();
+            //int val = (int)e.NewValue;
+            action = new Thread(ChangeBrightness); // 在子线程运行更新UI（异步）
+            action.Start();
+        }
+
+        private void ChangeBrightness()
+        {
+            this.Dispatcher.Invoke(new Action(() =>
+                {
+                    int val = (int)BrightnessBar.Value;
+                    Mat dst = this.src + new Scalar(val, val, val);
+                    ImageCV.Source = dst.ToWriteableBitmap();
+                }
+            )
+            );
         }
     }
 }
