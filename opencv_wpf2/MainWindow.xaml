@@ -1,0 +1,22 @@
+﻿<mah:MetroWindow x:Class="opencv_wpf2.MainWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 Title="调整图片亮度"
+                 Width="800"
+                 Height="480"
+                 WindowStartupLocation="CenterScreen"
+                 mc:Ignorable="d">
+    <StackPanel Orientation="Vertical">
+        <Image x:Name="ImageCV" Height="400" Width="800"></Image>
+        <Slider x:Name="BrightnessBar" Orientation="Horizontal" Maximum="255" Minimum="-255" ValueChanged="BrightnessBar_ValueChanged"  Style="{DynamicResource MahApps.Styles.Slider.Flat}" Margin="0,2,0,2"  />
+        <!--与label显示的值关联binding Value="{Binding ElementName=status, Path=Content}"  -->
+        <Label x:Name="status" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{DynamicResource MahApps.Styles.Label}">
+            <mah:ProgressRing Width="25" Height="25"/>
+        </Label>
+        
+
+    </StackPanel>
+</mah:MetroWindow>
