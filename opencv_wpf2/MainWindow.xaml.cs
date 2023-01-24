@@ -40,10 +40,11 @@ namespace opencv_wpf2
         private void ChangeBrightness()
         {
             Thread.Sleep(TimeSpan.FromSeconds(1));
+            int val = (int)BrightnessBar.Value;
+            Mat dst = this.src + new Scalar(val, val, val);
             this.Dispatcher.Invoke(new Action(() =>
             {
-                int val = (int)BrightnessBar.Value;
-                Mat dst = this.src + new Scalar(val, val, val);
+                
                 ImageCV.Source = dst.ToWriteableBitmap();
                 if (val > 0)
                 {
