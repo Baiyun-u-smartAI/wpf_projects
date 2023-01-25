@@ -1,0 +1,34 @@
+﻿<Window x:Class="WpfApp9.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp9" xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="480" Width="400">
+    <StackPanel>
+        <Viewbox Stretch="Uniform">
+            <Calendar x:Name="myCalendar" SelectedDatesChanged="myCalendar_SelectedDatesChanged"
+                       SelectionMode="MultipleRange" ><!--SelectedDate="01.01.2023"-->
+                <Calendar.BlackoutDates>
+                    <CalendarDateRange Start="01.10.2023" End="01.10.2023"></CalendarDateRange>
+                    
+                </Calendar.BlackoutDates>
+                <Calendar.SelectedDates>
+                    <sys:DateTime>01/03/2023</sys:DateTime> <!--要使用sys:，需要增加xmlns:sys="clr-namespace:System;assembly=System.Runtime"-->
+                    <sys:DateTime>01/01/2023</sys:DateTime>
+                    <sys:DateTime>01/30/2023</sys:DateTime>
+                </Calendar.SelectedDates>
+            </Calendar>
+        </Viewbox>
+        <TextBlock FontSize="20">
+            <Label Content="你选择的日期总数为" Padding="5,5,0,5"/>
+            <Label x:Name="myLabel" Padding="0,5,5,5" Content="{Binding ElementName=myCalendar, Path=SelectedDates.Count, UpdateSourceTrigger=PropertyChanged}" Foreground="#FF1A00FF"/>
+        </TextBlock>
+        <DatePicker x:Name="myPicker" SelectedDateFormat="Short" SelectedDate="01.01.2023" FontSize="16" SelectedDateChanged="myPicker_SelectedDateChanged">
+            <DatePicker.BlackoutDates>
+                <CalendarDateRange Start="01.17.2023" End="01.17.2023"></CalendarDateRange>
+            </DatePicker.BlackoutDates>
+        </DatePicker>
+    </StackPanel>
+</Window>
